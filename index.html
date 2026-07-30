@@ -12225,10 +12225,11 @@ function reFmtPrice(p){ return '€ ' + p.toLocaleString('nl-BE'); }
 
 function reFilteredSorted(){
   var items = reAllListings().filter(function(l){
-    return reState.regios.has(l.regio) &&
+    var regioOk = l.regio === 'Onbekend' || reState.regios.has(l.regio);
+    return regioOk &&
       l.prijs <= reState.maxprijs &&
       l.kamers >= reState.minkamers &&
-      (!reState.tuin || l.tuin);
+      (!reState.tuin || l.tuin || l.regio === 'Onbekend');
   });
   items.sort(function(a,b){
     return reState.sort==='datum' ? (new Date(b.datum)-new Date(a.datum)) : (b.score-a.score);
