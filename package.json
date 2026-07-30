@@ -1,0 +1,9 @@
+{
+  "name": "qualitytime-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "QualityTime app met live vastgoed-scraper (Netlify Functions)",
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  }
+}
